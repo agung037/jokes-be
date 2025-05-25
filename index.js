@@ -2,8 +2,6 @@ const http = require('http');
 
 // define a simple request listener function
 function requestListener(req, res) {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
     res.end('Hello, semuanya backend disini!');
 }
 
