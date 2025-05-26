@@ -1,0 +1,272 @@
+{
+  "info": {
+    "name": "Jokes Backend API",
+    "description": "Complete API collection for the Jokes Backend with all endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Check if the server is running"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Hello, world!\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Lucky Number",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lucky-number",
+          "host": ["{{baseUrl}}"],
+          "path": ["lucky-number"]
+        },
+        "description": "Generate a random number between 1 and 100"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lucky-number",
+              "host": ["{{baseUrl}}"],
+              "path": ["lucky-number"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"luckyNumber\": 42\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Random Joke",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jokes",
+          "host": ["{{baseUrl}}"],
+          "path": ["jokes"]
+        },
+        "description": "Get a random joke from the database"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jokes",
+              "host": ["{{baseUrl}}"],
+              "path": ["jokes"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"question\": \"Kenapa cicak bisa nempel di dinding?\",\n  \"answer\": \"Karena pakai lem cicak!\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add New Joke",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Kenapa programmer suka ngopi?\",\n  \"answer\": \"Biar bisa Java script!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/jokes",
+          "host": ["{{baseUrl}}"],
+          "path": ["jokes"]
+        },
+        "description": "Add a new joke to the database"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Kenapa programmer suka ngopi?\",\n  \"answer\": \"Biar bisa Java script!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/jokes",
+              "host": ["{{baseUrl}}"],
+              "path": ["jokes"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Joke added successfully!\"\n}"
+        },
+        {
+          "name": "Bad Request - Missing Fields",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Incomplete joke\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/jokes",
+              "host": ["{{baseUrl}}"],
+              "path": ["jokes"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Both question and answer are required\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Joke Inspiration",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/jokes/inspiration",
+          "host": ["{{baseUrl}}"],
+          "path": ["jokes", "inspiration"]
+        },
+        "description": "Get AI-generated joke inspiration (requires GROQ_API_KEY)"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jokes/inspiration",
+              "host": ["{{baseUrl}}"],
+              "path": ["jokes", "inspiration"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"jokes\": [\n    {\n      \"question\": \"Kenapa ayam tidak bisa main sepak bola?\",\n      \"answer\": \"Karena kalau tendang bola, kakinya patah!\"\n    },\n    {\n      \"question\": \"Apa bedanya kopi dengan programmer?\",\n      \"answer\": \"Kalau kopi bisa jadi dingin, kalau programmer jadi pusing!\"\n    },\n    {\n      \"question\": \"Kenapa cicak takut sama gecko?\",\n      \"answer\": \"Karena gecko sudah branded!\"\n    }\n  ]\n}"
+        },
+        {
+          "name": "Error - Service Unavailable",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jokes/inspiration",
+              "host": ["{{baseUrl}}"],
+              "path": ["jokes", "inspiration"]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Failed to get joke inspiration\"\n}"
+        }
+      ]
+    }
+  ]
+}

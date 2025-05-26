@@ -3,6 +3,7 @@ const path = require('path');
 const https = require('https');
 require('dotenv').config();
 
+
 function generateRandomNumber() {
   return Math.floor(Math.random() * 100) + 1;
 }
