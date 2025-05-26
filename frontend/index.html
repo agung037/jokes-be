@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes Bapak-Bapak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤣 Jokes Bapak-Bapak Indonesia</h1>
+            <p>Koleksi jokes lawak bapak-bapak terbaik!</p>
+        </header>
+
+        <!-- Show Random Joke Section -->
+        <section class="joke-section">
+            <h2>📖 Joke Random</h2>
+            <div class="joke-card" id="jokeCard">
+                <div class="joke-question" id="jokeQuestion">
+                    Klik tombol untuk melihat joke!
+                </div>
+                <div class="joke-answer" id="jokeAnswer" style="display: none;"></div>
+                <button id="showAnswerBtn" style="display: none;" onclick="showAnswer()">
+                    Lihat Jawaban
+                </button>
+            </div>
+            <button class="btn btn-primary" onclick="getRandomJoke()">
+                🎲 Joke Random Baru
+            </button>
+        </section>
+
+        <!-- Add New Joke Section -->
+        <section class="joke-section">
+            <h2>✍️ Tambah Joke Baru</h2>
+            <form id="addJokeForm">
+                <div class="form-group">
+                    <label for="question">Pertanyaan:</label>
+                    <input type="text" id="question" placeholder="Contoh: Kenapa cicak bisa nempel di dinding?" required>
+                </div>
+                <div class="form-group">
+                    <label for="answer">Jawaban:</label>
+                    <input type="text" id="answer" placeholder="Contoh: Karena pakai lem cicak!" required>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    ➕ Tambah Joke
+                </button>
+            </form>
+        </section>
+
+        <!-- AI Inspiration Section -->
+        <section class="joke-section">
+            <h2>🤖 Inspirasi Joke dari AI</h2>
+            <button class="btn btn-secondary" onclick="getJokeInspiration()" id="inspirationBtn">
+                💡 Minta Inspirasi AI
+            </button>
+            <div id="inspirationResults" class="inspiration-results"></div>
+        </section>
+
+        <!-- Lucky Number Section -->
+        <section class="joke-section">
+            <h2>🍀 Lucky Number</h2>
+            <div class="lucky-number" id="luckyNumber">?</div>
+            <button class="btn btn-primary" onclick="getLuckyNumber()">
+                🎰 Generate Lucky Number
+            </button>
+        </section>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
