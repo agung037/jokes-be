@@ -3,7 +3,16 @@ const Hapi = require('@hapi/hapi');
 const { generateRandomNumber, getRandomJoke, addNewJoke, getJokeInspiration } = require('./utils');
 
 // Buat server
-const server = Hapi.server({ port: 3001, host: 'localhost' });
+const server = Hapi.server({ 
+  port: 3001, 
+  host: 'localhost',
+  routes: {
+    cors: {
+      origin: ['*'],
+      headers: ['Content-Type', 'Authorization']
+    }
+  }
+});
 
 // Buat rute
 const routes = [
